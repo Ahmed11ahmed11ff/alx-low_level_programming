@@ -4,6 +4,7 @@
  * Return 0 (seccess)
  */
 int main(void)
+{
 	char r;
 	int n;
 	long int ln;
@@ -15,3 +16,4 @@ int main(void)
 	printf("Size of a long long: %lu byte(s) \n", (unsigned long)sizeof(ll));
         printf("Size of a float: %lu byte(s) \n", (unsigned long)sizeof(f));
 	return (0);
+}	
