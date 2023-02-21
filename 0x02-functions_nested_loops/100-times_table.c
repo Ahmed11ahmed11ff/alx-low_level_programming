@@ -20,9 +20,7 @@ void print_times_table(int n)
 			product = i * j;
 
 			if (j == 0)
-			{
 				_putchar('0');
-			}
 			else
 			{
 				_putchar(',');
@@ -45,9 +43,6 @@ void print_times_table(int n)
 					_putchar((product / 100) + '0');
 					_putchar(((product / 10) % 10) + '0');
 					_putchar((product % 10) + '0');
-				}
-			}
-		}
+				}}}
 		_putchar('\n');
-	}
-}
+	}}
