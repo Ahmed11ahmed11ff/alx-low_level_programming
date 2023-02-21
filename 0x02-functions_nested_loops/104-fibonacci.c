@@ -7,20 +7,22 @@
  * Return: Always 0 (Success)
  */
 
-int main(void)
+void print_times_table(int n)
 {
-	unsigned long int i, n1, n2, tmp;
-
-	n1 = 1;
-	n2 = 2;
-	printf("%lu, %lu", n1, n2);
-	for (i = 0; i < 96; i++)
+	if (n >= 98)
 	{
-		tmp = n1 + n2;
-		printf(", %lu", tmp);
-		n1 = n2;
-		n2 = tmp;
+		while(n > 98)
+		{
+			printf("%d, ", n--);
+		}
+		printf("%d\n", n);
 	}
-	printf("\n");
-	return (0);
+	else
+	{
+		while (n < 98)
+		{
+			printf("%d, ", n++);
+		}
+		printf("%d\n", n);
+	}
 }
