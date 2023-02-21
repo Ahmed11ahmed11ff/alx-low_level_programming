@@ -27,7 +27,7 @@ int main(void)
 	for (i = 92; i < 99; i++)
 	{
 		printf(", %lu", aft1 + (aft2 / l));
-		printf("%0*lu", (int)(9 - (aft2 == 0)) , aft2);
+		printf("%0*lu", (int)(9 - (aft2 == 0)), aft2);
 		aft1 = aft1 + bef1;
 		bef1 = aft1 - bef1;
 		aft2 = aft2 + bef2;
