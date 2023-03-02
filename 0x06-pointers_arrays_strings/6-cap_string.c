@@ -30,6 +30,6 @@ char *cap_string(char *s)
 			prev_sep = 0;
 		}
 	}
-	
-	return s;
+
+	return (s);
 }
