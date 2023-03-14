@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include "main.h"
 
 /**
@@ -6,66 +7,79 @@
  * @s: string to evaluate
  *
  * Return: number of words
- **/
+ */
 int count_word(char *s)
 {
-		int flag, c, w;
+	int count = 0;
+	int len = strlen(s);
 
-flag = 0;
-w = 0;
-for (c = 0; s[c] != '\0'; c++)
-{
-if (s[c] == ' ')
-flag = 0;
-else if (flag == 0)
-{
-																			flag = 1;
-																						w++;
-																								}
-													}
-						return (w);
+	if (len == 0)
+	{
+		return 0;
+	}
+
+	if (s[0] != ' ')
+	{
+		count++;
+	}
+
+	for (int i = 1; i < len; i++)
+	{
+        if (s[i] == ' ' && s[i - 1] != ' ') {
+            count++;
+        }
+    }
+
+    return count;
 }
+
 /**
- * **strtow - splits a string into word
+ * strtow - splits a string into words
  * @str: string to split
  *
  * Return: pointer to an array of strings (Success)
- * or NULL (Error)
+ *         or NULL (Error)
  */
 char **strtow(char *str)
 {
-	char **matrix, *tmp;
-	int i, k = 0, len = 0, words, c = 0, start, end;
+    char **matrix;
+    int count, i, j, k, len;
+    char *token;
 
-	while (*(str + len))
-		len++;
-	words = count_word(str);
-	if (words == 0)
-		return (NULL);
-	matrix = (char **) malloc(sizeof(char *) * (words + 1));
-	if (matrix == NULL)
-		return (NULL);
-	for (i = 0; i <= len; i++)
-	{
-		if (str[i] == ' ' || str[i] == '\0')
-		{
-			if (c)
-			{
-				end = i;
-				tmp = (char *) malloc(sizeof(char) * (c + 1));
-				if (tmp == NULL)
-					return (NULL);
-				while (start < end)
-					*tmp++ = str[start++];
-				*tmp = '\0';
-				matrix[k] = tmp - c;
-				k++;
-				c = 0;
-			}
-		}
-		else if (c++ == 0)
-			start = i;
-	}
-	matrix[k] = NULL;
-	return (matrix);
+    if (str == NULL) {
+        return NULL;
+    }
+
+    count = count_word(str);
+    if (count == 0) {
+        return NULL;
+    }
+
+    matrix = malloc(sizeof(char *) * (count + 1));
+    if (matrix == NULL) {
+        return NULL;
+    }
+
+    for (i = 0, k = 0; i < count; i++, k++) {
+        while (str[k] == ' ') {
+            k++;
+        }
+        len = 0;
+        for (j = k; str[j] != ' ' && str[j] != '\0'; j++, len++) {}
+        token = malloc(sizeof(char) * (len + 1));
+        if (token == NULL) {
+            for (int m = 0; m < i; m++) {
+                free(matrix[m]);
+            }
+            free(matrix);
+            return NULL;
+        }
+        strncpy(token, &str[k], len);
+        token[len] = '\0';
+        matrix[i] = token;
+        k = j;
+    }
+
+    matrix[count] = NULL;
+return matrix;
 }
