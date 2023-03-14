@@ -10,7 +10,7 @@
  */
 int count_word(char *s)
 {
-	int count = 0;
+	int count = 0, i;
 	int len = strlen(s);
 
 	if (len == 0)
@@ -23,7 +23,7 @@ int count_word(char *s)
 		count++;
 	}
 
-	for (int i = 1; i < len; i++)
+	for (i = 1; i < len; i++)
 	{
         if (s[i] == ' ' && s[i - 1] != ' ') {
             count++;
@@ -43,7 +43,7 @@ int count_word(char *s)
 char **strtow(char *str)
 {
     char **matrix;
-    int count, i, j, k, len;
+    int count, i, j, k, len, m;
     char *token;
 
     if (str == NULL) {
@@ -68,7 +68,7 @@ char **strtow(char *str)
         for (j = k; str[j] != ' ' && str[j] != '\0'; j++, len++) {}
         token = malloc(sizeof(char) * (len + 1));
         if (token == NULL) {
-            for (int m = 0; m < i; m++) {
+            for (m = 0; m < i; m++) {
                 free(matrix[m]);
             }
             free(matrix);
