@@ -8,7 +8,7 @@
  *
  * @size: Size of array.
  * @c: Char to assign.
- *
+ * Description: Create an array of size size and assign char c.
  * return: Pointer to array, NULL if fail.
  */
 
