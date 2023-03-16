@@ -6,12 +6,12 @@
  * malloc_checked - Function that allocates memory using malloc.
  * @b: Number of bytes to allocate.
  *
- * Return Pointer to allocated momory.
+ * Return: Pointer to allocated momory.
  */
 
 void *malloc_checked(unsigned int b)
 {
-	void *ptr
+	void *ptr;
 
 		ptr = malloc(b);
 	if (ptr == NULL)
