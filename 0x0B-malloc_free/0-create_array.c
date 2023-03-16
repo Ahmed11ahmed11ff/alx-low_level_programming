@@ -9,7 +9,7 @@
  * @size: Size of array.
  * @c: Char to assign.
  * Description: Create an array of size size and assign char c.
- * return: Pointer to array, NULL if fail.
+ * Return: pointer to array if size != 0 || str != NULL, eihter return NULL.
  */
 
 char *create_array(unsigned int size, char c)
